@@ -102,6 +102,12 @@ func main() {
 			log.Fatal(err)
 		}
 
+	case "show":
+		err := cmdShow(&config, trailing)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 	default:
 		fmt.Fprintf(os.Stderr, "Error: Invalid command %s\n\n", trailing[0])
 		showUsage()

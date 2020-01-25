@@ -26,13 +26,18 @@ Usage: vault-keepass [-help] [-url <url>] [-version] -path <path> <command>
     -version        Show version information
 
 Commands:
-    copy            Copy value to clipboard
+    copy <key>
+        Copy value of <key> to clipboard.
+        Only supported on Linux, Windows and MacOS
 
     delete          Delete a key/value entry
 
     list            List keys
 
-    show            Display value on standard output
+    show [<key>] [<key>] ...
+        Display key value on standard output
+        List of keys to display, if empty all keys and values will be displayed.
+        If only one key is given it's value (without key name) will be displayed.
 
     set [-replace] key value
         Set a key to a value
