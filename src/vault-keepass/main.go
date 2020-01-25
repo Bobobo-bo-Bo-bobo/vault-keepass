@@ -91,6 +91,12 @@ func main() {
 
 	switch trailing[0] {
 
+	case "delete":
+		err := cmdDelete(&config, trailing)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 	case "copy":
 		err := cmdCopy(&config, trailing)
 		if err != nil {

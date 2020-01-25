@@ -30,9 +30,11 @@ Commands:
         Copy value of <key> to clipboard.
         Only supported on Linux, Windows and MacOS
 
-    delete          Delete a key/value entry
+    delete <key> [<key> ...]
+        Delete a key entry from Vault storage
 
-    list            List keys
+    list
+        List keys in the path provided
 
     show [<key>] [<key>] ...
         Display key value on standard output
