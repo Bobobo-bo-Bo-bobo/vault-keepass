@@ -90,14 +90,21 @@ func main() {
 	}
 
 	switch trailing[0] {
-	case "set":
-		err := cmdSet(&config, trailing)
+
+	case "copy":
+		err := cmdCopy(&config, trailing)
 		if err != nil {
 			log.Fatal(err)
 		}
 
 	case "list":
 		err := cmdList(&config, trailing)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+	case "set":
+		err := cmdSet(&config, trailing)
 		if err != nil {
 			log.Fatal(err)
 		}
