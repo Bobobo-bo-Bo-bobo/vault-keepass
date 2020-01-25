@@ -30,6 +30,8 @@ Commands:
 
     delete          Delete a key/value entry
 
+    list            List keys
+
     show            Display value on standard output
 
     set [-replace] key value

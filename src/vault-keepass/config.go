@@ -17,6 +17,17 @@ type VaultKVResult struct {
 	Data      map[string]string `json:"data"`
 }
 
+// VaultKVListResult - result from LIST request
+type VaultKVListResult struct {
+	RequestID string       `json:"request_id"`
+	Data      VaultKeyList `json:"data"`
+}
+
+// VaultKeyList - list ov keys
+type VaultKeyList struct {
+	Keys []string `json:"keys"`
+}
+
 // VaultError - Vault error format
 type VaultError struct {
 	Messages []string
