@@ -30,8 +30,8 @@ Commands:
         Copy value of <key> to clipboard.
         Only supported on Linux, Windows and MacOS
 
-    delete <key> [<key> ...]
-        Delete a key entry from Vault storage
+    delete <loc> [<loc> ...]
+        Delete all key entries from Vault storage at <loc> in the provided path
 
     list
         List keys in the path provided
