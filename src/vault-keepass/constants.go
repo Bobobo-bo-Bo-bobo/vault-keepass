@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 const name = "vault-keepass"
-const version = "1.0.0-2020.01.25"
+const version = "1.0.0-2020.02.19"
 const _url = "https://git.ypbind.de/cgit/vault-keepass/"
 
 var userAgent = fmt.Sprintf("%s/%s (%s)", name, version, _url)
@@ -41,8 +41,10 @@ Commands:
         List of keys to display, if empty all keys and values will be displayed.
         If only one key is given it's value (without key name) will be displayed.
 
-    set [-replace] key value
+    set [-replace] [key value]
         Set a key to a value
 
             -replace    Replace whole content on path with key=value
+
+        If key and value are not provided they will be read from standard input.
 `

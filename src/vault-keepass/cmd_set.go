@@ -15,6 +15,8 @@ func cmdSet(cfg *Configuration, args []string) error {
 	var res VaultKVResult
 	var payload []byte
 	var err error
+	var key string
+	var value string
 
 	parse := flag.NewFlagSet("cmd-set", flag.ExitOnError)
 	var replace = parse.Bool("replace", false, "Replace data instead of merging")
@@ -23,14 +25,23 @@ func cmdSet(cfg *Configuration, args []string) error {
 
 	_args := parse.Args()
 
-	if len(_args) != 2 {
+	if len(_args) != 2 && len(_args) != 0 {
 		fmt.Fprintf(os.Stderr, "Error: Not enough arguments for 'set' command\n\n")
 		showUsage()
 		os.Exit(1)
 	}
 
-	key := _args[0]
-	value := _args[1]
+	if len(_args) == 0 {
+		// Read standard, don't display input
+		fmt.Print("Key: ")
+		key = readStandardInput()
+		fmt.Println()
+		fmt.Print("Value: ")
+		value = readStandardInput()
+	} else {
+		key = _args[0]
+		value = _args[1]
+	}
 
 	if !*replace {
 		// fetch existing values

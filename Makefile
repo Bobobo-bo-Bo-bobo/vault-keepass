@@ -6,6 +6,7 @@ PROGRAMS = vault-keepass
 depend:
 	env GOPATH=$(GOPATH) go get -u github.com/atotto/clipboard
 	env GOPATH=$(GOPATH) go get -u github.com/sirupsen/logrus
+	env GOPATH=$(GOPATH) go get -u golang.org/x/crypto/ssh/terminal
 
 build:
 	env GOPATH=$(GOPATH) go install $(PROGRAMS)
@@ -26,6 +27,7 @@ clean:
 
 distclean: clean
 	rm -rf src/github.com/
+	rm -rf src/golang.org/
 
 uninstall:
 	/bin/rm -f $(DESTDIR)/usr/bin
