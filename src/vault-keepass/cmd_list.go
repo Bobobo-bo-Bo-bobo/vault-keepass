@@ -10,6 +10,8 @@ import (
 
 func cmdList(cfg *Configuration, args []string) error {
 	var res VaultKVListResult
+    var resp HTTPResult
+    var err error
 
 	if len(args) > 1 {
 		fmt.Fprintf(os.Stderr, "Error: list command don't accept additional parameters\n\n")
@@ -17,7 +19,7 @@ func cmdList(cfg *Configuration, args []string) error {
 		os.Exit(1)
 	}
 
-	resp, err := httpRequest(cfg, cfg.VaultURL+cfg.VaultPath, "LIST", nil, nil)
+	resp, err = httpRequest(cfg, cfg.VaultURL+cfg.VaultPath, "LIST", nil, nil)
 	if err != nil {
 		return err
 	}
@@ -39,6 +41,7 @@ func cmdList(cfg *Configuration, args []string) error {
 				}).Error("Invalid HTTP status received")
 				return fmt.Errorf("Listing of Vault keys failed")
 			}
+
 		} else {
 			log.WithFields(log.Fields{
 				"http_status":         resp.StatusCode,
