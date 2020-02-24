@@ -9,7 +9,10 @@ const _url = "https://git.ypbind.de/cgit/vault-keepass/"
 var userAgent = fmt.Sprintf("%s/%s (%s)", name, version, _url)
 
 const helpText = `
-Usage: vault-keepass [-help] [-url <url>] [-version] -path <path> <command>
+Usage: vault-keepass [-debug] [-help] [-url <url>] [-version] -path <path> <command>
+    -debug          Enable debug mode.
+                    WARNING: This will expose the vault token and all secrets!
+
     -help           This text
 
     -insecure-ssl   Don't validate server certificate
