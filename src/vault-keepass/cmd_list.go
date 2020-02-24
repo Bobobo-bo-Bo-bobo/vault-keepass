@@ -10,8 +10,8 @@ import (
 
 func cmdList(cfg *Configuration, args []string) error {
 	var res VaultKVListResult
-    var resp HTTPResult
-    var err error
+	var resp HTTPResult
+	var err error
 
 	if len(args) > 1 {
 		fmt.Fprintf(os.Stderr, "Error: list command don't accept additional parameters\n\n")

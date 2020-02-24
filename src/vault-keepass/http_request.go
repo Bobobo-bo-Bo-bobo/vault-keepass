@@ -95,5 +95,14 @@ func httpRequest(config *Configuration, _url string, method string, header *map[
 		return result, err
 	}
 
+	if config.Debug {
+		log.WithFields(log.Fields{
+			"status":      result.Status,
+			"status_code": result.StatusCode,
+			"header":      result.Header,
+			"content":     string(result.Content),
+		}).Debug("Received data from HTTP request")
+	}
+
 	return result, nil
 }
