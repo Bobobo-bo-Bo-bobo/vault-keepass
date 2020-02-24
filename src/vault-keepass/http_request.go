@@ -72,7 +72,7 @@ func httpRequest(config *Configuration, _url string, method string, header *map[
 		log.WithFields(log.Fields{
 			"url":     _url,
 			"method":  method,
-			"headers": header,
+			"headers": request.Header,
 		}).Debug("Sending HTTP request")
 
 	}
