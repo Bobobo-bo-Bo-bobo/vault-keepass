@@ -3,6 +3,7 @@ package main
 import (
 	"crypto/tls"
 	"fmt"
+	log "github.com/sirupsen/logrus"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -65,6 +66,15 @@ func httpRequest(config *Configuration, _url string, method string, header *map[
 		for key, value := range *header {
 			request.Header.Add(key, value)
 		}
+	}
+
+	if config.Debug {
+		log.WithFields(log.Fields{
+			"url":     _url,
+			"method":  method,
+			"headers": header,
+		}).Debug("Sending HTTP request")
+
 	}
 
 	response, err := client.Do(request)

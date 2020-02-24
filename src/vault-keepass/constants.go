@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 const name = "vault-keepass"
-const version = "1.0.0-2020.02.19"
+const version = "1.0.0-2020.02.24"
 const _url = "https://git.ypbind.de/cgit/vault-keepass/"
 
 var userAgent = fmt.Sprintf("%s/%s (%s)", name, version, _url)

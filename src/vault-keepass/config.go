@@ -9,6 +9,7 @@ type Configuration struct {
 	VaultPath        string
 	VaultInsecureSSL bool
 	VaultTimeout     int
+	Debug            bool
 }
 
 // VaultKVResult - Result from Vault GET request

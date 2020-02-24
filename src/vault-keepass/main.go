@@ -17,6 +17,7 @@ func main() {
 	var timeout = flag.Int("timeout", 5, "Vault connection timeout in seconds")
 	var insecure = flag.Bool("insecure-ssl", false, "Don't validate server certificate")
 	var url = flag.String("url", "", "Vault URL")
+	var debug = flag.Bool("debug", false, "Enable debug mode")
 
 	var _fmt = new(log.TextFormatter)
 	_fmt.FullTimestamp = true
@@ -80,6 +81,11 @@ func main() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %s\n\n", err.Error())
 		os.Exit(1)
+	}
+
+	config.Debug = *debug
+	if *debug {
+		log.SetLevel(log.DebugLevel)
 	}
 
 	trailing := flag.Args()
