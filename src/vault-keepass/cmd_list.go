@@ -10,6 +10,7 @@ import (
 
 func cmdList(cfg *Configuration, args []string) error {
 	var res VaultKVListResult
+	var res2 VaultKVResult
 	var resp HTTPResult
 	var err error
 
@@ -42,6 +43,13 @@ func cmdList(cfg *Configuration, args []string) error {
 				return fmt.Errorf("Listing of Vault keys failed")
 			}
 
+			err = json.Unmarshal(resp.Content, &res2)
+			if err != nil {
+				return err
+			}
+			for k, _ := range res2.Data {
+				fmt.Println(k)
+			}
 		} else {
 			log.WithFields(log.Fields{
 				"http_status":         resp.StatusCode,
@@ -49,14 +57,14 @@ func cmdList(cfg *Configuration, args []string) error {
 			}).Error("Invalid HTTP status received")
 			return fmt.Errorf("Listing of Vault keys failed")
 		}
-	}
-
-	err = json.Unmarshal(resp.Content, &res)
-	if err != nil {
-		return err
-	}
-	for _, k := range res.Data.Keys {
-		fmt.Println(k)
+	} else {
+		err = json.Unmarshal(resp.Content, &res)
+		if err != nil {
+			return err
+		}
+		for _, k := range res.Data.Keys {
+			fmt.Println(k)
+		}
 	}
 
 	return nil
